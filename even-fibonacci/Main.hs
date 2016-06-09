@@ -22,5 +22,6 @@ main = do
     case maybeInt of
          Just n  -> if n > 1 && n <= 100
              then putStrLn $ show $ take n $ filter even $ unfoldr f (0, 1)
-             else putStrLn "Please try again." >> main -- todo DRY
-         Nothing -> putStrLn "Please try again." >> main
+             else tryAgain
+         Nothing -> tryAgain
+         where tryAgain = putStrLn "Please try again." >> main
